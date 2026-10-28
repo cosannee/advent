@@ -21,6 +21,9 @@
 
 const SHEET_NAME = 'Заявки';
 const NOTIFY_EMAIL = ''; // например 'you@gmail.com'; пусто — без писем
+// ID таблицы из её адреса: docs.google.com/spreadsheets/d/<ВОТ_ЭТО>/edit
+// Нужен, только если скрипт создан отдельно на script.google.com, а не через «Расширения → Apps Script» в таблице.
+const SPREADSHEET_ID = '';
 
 const TOTAL = 12;
 const PREORDER_PRICE = 17900;
@@ -104,7 +107,8 @@ function countReserved_(sheet) {
 }
 
 function getSheet_() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const ss = SPREADSHEET_ID ? SpreadsheetApp.openById(SPREADSHEET_ID) : SpreadsheetApp.getActiveSpreadsheet();
+  if (!ss) throw new Error('Скрипт не привязан к таблице: укажите SPREADSHEET_ID');
   let sheet = ss.getSheetByName(SHEET_NAME);
   if (!sheet) sheet = ss.insertSheet(SHEET_NAME);
   if (sheet.getLastRow() === 0) {
