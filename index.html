@@ -218,7 +218,7 @@ function showOrder(){
   <div id="of-address-wrap"><label for="of-address">Город и адрес пункта СДЭК *</label><input id="of-address" name="address" maxlength="300" placeholder="Москва, ул. … (ПВЗ СДЭК)"></div>
   <label for="of-comment">Комментарий</label><textarea id="of-comment" name="comment" rows="3" maxlength="1000"></textarea>
   <input class="of-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-  <label class="of-radio of-consent"><input type="checkbox" name="consent" required> <span>Я даю согласие на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a></span></label>
+  <label class="of-radio of-consent"><input type="checkbox" name="consent" required> <span>Я даю <a href="consent.html" target="_blank" rel="noopener">согласие на обработку персональных данных</a> и ознакомлен(а) с <a href="privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a></span></label>
   <p class="of-error" id="of-error" role="alert"></p>
   <button type="submit" class="pill" id="of-submit">Отправить заявку →</button>
   <p class="note">${st.pre ? `Предоплата 30% — ${rub(st.prepay)} за календарь, после подтверждения заказа.` : 'Оплата — после подтверждения заказа.'} Вопросы: Telegram <a href="https://t.me/cosannee" target="_blank" rel="noopener">@cosannee</a>, другие мессенджеры <a href="tel:+79996167150">+7 999 616-71-50</a></p>
