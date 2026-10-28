@@ -25,7 +25,7 @@ const NOTIFY_EMAIL = ''; // например 'you@gmail.com'; пусто — б�
 const TOTAL = 12;
 const PREORDER_PRICE = 17900;
 const PREORDER_UNTIL = new Date('2026-11-15T23:59:59+03:00');
-const REGULAR_PRICE = 18000;
+const REGULAR_PRICE = 19900;
 const PREPAY = 0.3;
 const NOT_COUNTED = ['Отменена', 'Лист ожидания'];
 
