@@ -5,6 +5,7 @@
   "workers_dev": true,
   "preview_urls": false,
   "observability": { "enabled": true, "logs": { "enabled": true } },
+  "ai": { "binding": "AI", "remote": true },
   "vars": {
     "ALLOWED_ORIGIN": "https://cosannee.github.io"
   },
