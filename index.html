@@ -32,12 +32,11 @@
 .hero-magic{position:absolute!important;inset:0;overflow:hidden;pointer-events:none;z-index:2!important}
 .hero-magic-star{position:absolute;top:-35px;left:var(--left);font-family:Georgia,serif;color:var(--star-color);font-size:var(--size);opacity:0;text-shadow:0 0 8px #fff2c8;animation:hero-star-fall var(--duration) linear var(--delay) infinite;will-change:transform,opacity}
 @keyframes hero-star-fall{0%{transform:translate3d(0,-30px,0) rotate(0);opacity:0}12%{opacity:.85}82%{opacity:.7}100%{transform:translate3d(var(--drift),680px,0) rotate(210deg);opacity:0}}
-@media(hover:hover) and (pointer:fine){body.magic-cursor,body.magic-cursor a,body.magic-cursor button,body.magic-cursor summary{cursor:none!important}.wand-cursor{position:fixed;left:0;top:0;z-index:9999;width:65px;height:65px;pointer-events:none;opacity:0;transform:translate(-12px,-48px) rotate(-16deg);transition:opacity .16s ease;filter:drop-shadow(0 2px 2px #624c3244)}.wand-cursor.visible{opacity:1}.wand-cursor svg{width:100%;height:100%}.wand-twinkle{position:fixed;pointer-events:none;z-index:9998;color:#c99b47;font-size:16px;animation:wand-twinkle .65s ease-out forwards}@keyframes wand-twinkle{from{opacity:1;transform:translate(-50%,-50%) scale(.3) rotate(0)}to{opacity:0;transform:translate(-50%,-130%) scale(1.2) rotate(90deg)}}}
-@media(prefers-reduced-motion:reduce){.hero-magic-star{animation:none;display:none}.wand-twinkle{display:none}}
+@media(hover:hover) and (pointer:fine){body{cursor:url('cursor-sparkle.svg') 2 2,auto}a,button,summary,[role="button"]{cursor:pointer}input,textarea{cursor:text}}
+@media(prefers-reduced-motion:reduce){.hero-magic-star{animation:none;display:none}}
 </style><style>
 /* Responsive refinement: comfortable spacing and no horizontal overflow */
-html,body{max-width:100%;overflow-x:clip} .wand-cursor{display:none!important}
-@media (hover:hover) and (pointer:fine){.wand-cursor.visible{display:block!important}}
+html,body{max-width:100%;overflow-x:clip}
 .hero{overflow:hidden}.hero-magic{z-index:0!important}.hero > :not(.hero-magic){z-index:1}
 .hero-magic-star{animation-name:hero-star-fall-mobile;animation-timing-function:linear}
 @keyframes hero-star-fall-mobile{0%{transform:translate3d(0,-40px,0) rotate(0);opacity:0}15%{opacity:.8}85%{opacity:.65}100%{transform:translate3d(var(--drift),min(110vh,900px),0) rotate(160deg);opacity:0}}
@@ -53,7 +52,6 @@ html,body{max-width:100%;overflow-x:clip} .wand-cursor{display:none!important}
  .gift-grid{gap:18px}.gift-info{padding:18px}
  .order{padding:78px 28px}.footer{padding-top:48px;padding-bottom:48px}
  .modal-back{padding:18px}.modal{padding:30px 23px;max-height:calc(100dvh - 36px);overflow:auto}
- .wand-cursor{display:none!important}
 }
 @media(max-width:520px){
  .logo{font-size:15px;letter-spacing:.05em}
@@ -196,12 +194,12 @@ body.gift-overlay-open{overflow:hidden}
 .letter-section .letter-heading{max-width:720px;margin:0 auto 45px}
 .letter-section .letter-heading p{max-width:640px;margin:0 auto;font-size:15px}
 .letter-layout{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px;align-items:start}
-.letter-form,.letter-result{background:#fffdf8;border:1px solid #e4d9c9;border-radius:12px;padding:28px;box-shadow:0 12px 35px #6d493413}
+.letter-form,.letter-result{min-width:0;background:#fffdf8;border:1px solid #e4d9c9;border-radius:12px;padding:28px;box-shadow:0 12px 35px #6d493413}
 .letter-form-head,.letter-result-head{display:flex;align-items:center;gap:11px;margin-bottom:20px}
 .letter-form-head span,.letter-result-head span{display:grid;place-items:center;flex:none;width:31px;height:31px;border:1px solid var(--red);border-radius:50%;color:var(--red);font:12px Georgia,serif}
-.letter-form-head h3,.letter-result-head h3{margin:0;font-size:26px}
-.letter-form-grid{display:grid;grid-template-columns:1.4fr .8fr;gap:16px 12px}
-.letter-field{display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:600;color:var(--ink)}
+.letter-form-head h3,.letter-result-head h3{min-width:0;margin:0;font-size:26px;line-height:1.18}
+.letter-form-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.8fr);gap:16px 12px}
+.letter-field{display:flex;flex-direction:column;gap:7px;min-width:0;font-size:12px;font-weight:600;color:var(--ink)}
 .letter-field small{font-weight:400;color:var(--muted)}
 .letter-wide{grid-column:1/-1}
 .letter-field input,.letter-field textarea,.letter-field select,.letter-edit{width:100%;border:1px solid #d9cbbb;border-radius:6px;padding:11px 12px;background:white;color:var(--ink);font:14px/1.5 'Golos Text',Arial,sans-serif;outline-offset:2px}
@@ -209,7 +207,7 @@ body.gift-overlay-open{overflow:hidden}
 .letter-field input:focus,.letter-field textarea:focus,.letter-field select:focus,.letter-edit:focus{outline:2px solid #bd756c;border-color:var(--red)}
 .letter-form-actions,.letter-result-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:22px}
 .letter-form-actions .pill{white-space:nowrap}
-.letter-demo,.letter-action{background:transparent;border:1px solid var(--red);color:var(--red);border-radius:99px;padding:13px 17px;font-size:12px;cursor:pointer}
+.letter-demo,.letter-action{min-height:44px;background:transparent;border:1px solid var(--red);color:var(--red);border-radius:99px;padding:13px 17px;font-size:12px;cursor:pointer}
 .letter-demo:hover,.letter-action:hover{background:#faeee9}
 .letter-privacy{font-size:11px;line-height:1.55;margin:16px 0 0!important;color:var(--muted)}
 .letter-consent{display:flex;align-items:flex-start;gap:9px;margin-top:18px;font-size:12px;line-height:1.5;color:var(--ink)}.letter-consent input{margin-top:3px;accent-color:var(--red)}.letter-consent a{color:var(--red)}
@@ -227,7 +225,8 @@ body.gift-overlay-open{overflow:hidden}
 .letter-fit{font-size:12px;line-height:1.5;color:var(--olive);margin:10px 0 0!important;min-height:18px}
 body>.letter-print-root{display:none}
 @media(max-width:900px){.letter-layout{grid-template-columns:1fr}.letter-form,.letter-result{max-width:660px;width:100%;margin:auto}}
-@media(max-width:520px){.letter-section .letter-heading{margin-bottom:27px}.letter-form,.letter-result{padding:19px}.letter-form-grid{grid-template-columns:1fr}.letter-wide{grid-column:auto}.letter-form-actions .pill,.letter-demo,.letter-action{width:100%;text-align:center}.letter-result-head h3,.letter-form-head h3{font-size:23px}}
+@media(min-width:901px) and (max-width:1150px){.letter-form-grid{grid-template-columns:1fr}.letter-wide{grid-column:auto}}
+@media(max-width:520px){.letter-section .letter-heading{margin-bottom:27px}.letter-form,.letter-result{padding:19px}.letter-form-grid{grid-template-columns:1fr}.letter-wide{grid-column:auto}.letter-form-actions .pill,.letter-demo,.letter-action{width:100%;text-align:center;font-size:14px}.letter-result-head h3,.letter-form-head h3{font-size:23px}.letter-field input,.letter-field textarea,.letter-field select,.letter-edit{font-size:16px}}
 @page{size:A4 portrait;margin:0}
 @media print{
   html,body{width:210mm;height:297mm;margin:0!important;padding:0!important;background:white!important}
@@ -255,25 +254,25 @@ body>.letter-print-root{display:none}
   <div class="wrap">
     <div class="letter-heading center">
       <div class="eyebrow">06 / Северная почта</div>
-      <h2>Письмо, в котором узнают себя</h2>
-      <p>Расскажите Деду Морозу о близком человеке — его маленьких победах, радостях и мечтах. Он сложит ваши слова в личное письмо на винтажном бланке, которое можно сохранить и распечатать.</p>
+      <h2>Письмо, в котором ребёнок узнает себя</h2>
+      <p>Расскажите Деду Морозу о ребёнке — его маленьких победах, радостях и мечтах. Он сложит ваши слова в личное письмо на винтажном бланке, которое можно сохранить и распечатать.</p>
     </div>
     <div class="letter-layout">
       <form class="letter-form" id="letter-form">
-        <div class="letter-form-head"><span>01</span><h3>Расскажите о получателе</h3></div>
+        <div class="letter-form-head"><span>01</span><h3>Расскажите о ребёнке</h3></div>
         <div class="letter-form-grid">
-          <label class="letter-field">Как обращаться?<input name="name" maxlength="40" required placeholder="Например, Сашенька" autocomplete="off"></label>
-          <label class="letter-field">Возраст <small>необязательно</small><input name="age" maxlength="20" placeholder="Например, 29 лет" autocomplete="off"></label>
-          <label class="letter-field letter-wide">Чем человек особенно гордится в этом году?<textarea name="achievements" maxlength="350" required rows="3" placeholder="Переехал, освоил новое, справился с трудностью…"></textarea></label>
-          <label class="letter-field letter-wide">Что он любит и что приносит ему радость?<textarea name="interests" maxlength="300" rows="2" placeholder="Любимая работа, увлечения, семейные моменты…"></textarea></label>
-          <label class="letter-field letter-wide">О чём мечтает или к чему стремится?<textarea name="dreams" maxlength="300" rows="2" placeholder="Большая мечта или маленькое желание…"></textarea></label>
-          <label class="letter-field letter-wide">Личная деталь <small>необязательно</small><textarea name="detail" maxlength="250" rows="2" placeholder="То, что сделает письмо узнаваемым"></textarea></label>
+          <label class="letter-field"><span>Имя ребёнка</span><input name="name" maxlength="40" required placeholder="Например, Дашенька" autocomplete="off"></label>
+          <label class="letter-field"><span>Возраст <small>необязательно</small></span><input name="age" maxlength="20" placeholder="Например, 5 лет" autocomplete="off"></label>
+          <label class="letter-field letter-wide">Что у ребёнка получилось в этом году?<textarea name="achievements" maxlength="350" required rows="3" placeholder="Научилась кататься на велосипеде, помогла младшей сестре…"></textarea></label>
+          <label class="letter-field letter-wide">Что ребёнок любит?<textarea name="interests" maxlength="300" rows="2" placeholder="Динозавров, конструктор, сказки перед сном…"></textarea></label>
+          <label class="letter-field letter-wide">О чём мечтает?<textarea name="dreams" maxlength="300" rows="2" placeholder="Научиться плавать и увидеть море…"></textarea></label>
+          <label class="letter-field letter-wide">Особенная деталь <small>необязательно</small><textarea name="detail" maxlength="250" rows="2" placeholder="Любимое прозвище, семейная шутка или маленькая традиция"></textarea></label>
           <label class="letter-field letter-wide">Настроение письма<select name="tone"><option value="warm">Тёплое и волшебное</option><option value="playful">Немного озорное</option><option value="tender">Особенно нежное</option></select></label>
         </div>
         <label class="letter-consent"><input type="checkbox" name="letterConsent" required><span>Я вправе передать сведения о получателе и согласен(на) на их обработку для создания письма согласно <a href="consent.html" target="_blank" rel="noopener">согласию</a> и <a href="privacy.html" target="_blank" rel="noopener">политике</a>.</span></label>
         <div class="letter-form-actions">
           <button class="pill" type="submit" id="letter-generate">Создать письмо ✦</button>
-          <button class="letter-demo" type="button" id="letter-demo">Посмотреть пример Сашеньки</button>
+          <button class="letter-demo" type="button" id="letter-demo">Посмотреть пример Дашеньки</button>
         </div>
         <p class="letter-privacy">Для создания письма факты обрабатываются в Cloudflare Workers AI. Не указывайте адрес, телефон и другие чувствительные сведения — достаточно добрых фактов и воспоминаний.</p>
         <p class="letter-status" id="letter-status" role="status" aria-live="polite"></p>
@@ -403,16 +402,10 @@ async function submitOrder(e){
 }
 document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-</script><div aria-hidden="true" class="wand-cursor" hidden=""><svg viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><g transform="rotate(38 32 32)"><path d="M31 15 L31 57" stroke="#8b6a48" stroke-linecap="round" stroke-width="6"></path><path d="M31 17 L31 56" stroke="#e6cba4" stroke-linecap="round" stroke-width="3"></path><path d="M31 5 L34 12 L42 12 L36 17 L38 25 L31 20 L24 25 L26 17 L20 12 L28 12 Z" fill="#edc86b" stroke="#a77838" stroke-width="1.4"></path></g><path d="M11 13v8m-4-4h8M50 8v8m-4-4h8" stroke="#c9a054" stroke-linecap="round" stroke-width="1.6"></path></svg></div><script>
+</script><script>
 (function(){
  const layer=document.querySelector('.hero-magic');
  if(layer){for(let i=0;i<31;i++){const star=document.createElement('span');star.className='hero-magic-star';star.textContent=i%4===0?'✦':i%3===0?'✧':'⋆';star.style.setProperty('--left',((i*37.7)%98+1)+'%');star.style.setProperty('--size',(10+i%5*3)+'px');star.style.setProperty('--duration',(8+i%7*1.3)+'s');star.style.setProperty('--delay',(-i*.74)+'s');star.style.setProperty('--drift',((i%2?1:-1)*(20+i%5*18))+'px');star.style.setProperty('--star-color',i%4===0?'#d5a24b':'#e3c58d');layer.appendChild(star)}}
- const fine=window.matchMedia('(hover:hover) and (pointer:fine)');const reduce=window.matchMedia('(prefers-reduced-motion:reduce)');
- if(!fine.matches)return;
- const wand=document.querySelector('.wand-cursor');document.body.classList.add('magic-cursor');let last=0;
- document.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;wand.style.left=e.clientX+'px';wand.style.top=e.clientY+'px';wand.classList.add('visible');if(!reduce.matches&&Date.now()-last>180){last=Date.now();const spark=document.createElement('span');spark.className='wand-twinkle';spark.textContent='✧';spark.style.left=(e.clientX+7)+'px';spark.style.top=(e.clientY-22)+'px';document.body.appendChild(spark);setTimeout(()=>spark.remove(),680)}});
- document.addEventListener('pointerout',e=>{if(!e.relatedTarget)wand.classList.remove('visible')});
- document.addEventListener('pointerdown',()=>{if(reduce.matches)return;const x=parseFloat(wand.style.left),y=parseFloat(wand.style.top);if(!Number.isFinite(x)||!Number.isFinite(y))return;for(let i=0;i<5;i++){const spark=document.createElement('span');spark.className='wand-twinkle';spark.textContent=i%2?'✦':'✧';spark.style.left=(x+(i-2)*13)+'px';spark.style.top=(y-15-(i%3)*12)+'px';document.body.appendChild(spark);setTimeout(()=>spark.remove(),680)}});
 })();
 </script><script>
 (function(){
@@ -645,15 +638,15 @@ const MUSIC_SONGS = [
 (() => {
   const rules = [514, 561, 608, 655, 702, 749, 796, 843, 887, 934, 981, 1028, 1074, 1121, 1168, 1215];
   const maxLineWidth = 816;
-  const demo = `Сашенька,
+  const demo = `Дашенька,
 
-В моей снежной почте хранятся не только детские мечты. В этом году я с особенным теплом следил за твоими шагами. Ты по-настоящему повзрослела: стала жить одна и устроила вокруг себя мир, в котором можно быть собой.
+В этом году мои снежинки принесли чудесные вести: в свои пять лет ты научилась кататься на велосипеде! Наверное, ветер едва успевал за тобой, когда ты крутила педали. Я очень рад твоей смелости.
 
-Ты нашла работу, которую по-настоящему любишь. Знаешь, даже мои олени замечают, когда человек идёт к любимому делу: его глаза светятся ярче праздничных гирлянд. А ещё ты поверила в свои мечты. Это смелость, которой стоит гордиться.
+А ещё ты так заботишься о младшей сестрёнке. Это настоящее доброе волшебство. Даже мои олени притихли, когда услышали о тебе. Они, кстати, уверены, что в твоих огромных замках из конструктора живут динозавры. Может быть, однажды ты покажешь им самый высокий замок?
 
-Пусть впереди будет ещё больше свободы, интересных открытий и встреч, после которых хочется улыбаться. Береги свой живой интерес к миру, радуйся тому, что уже получилось, и смело выбирай то, от чего сердце становится счастливее.
+Я знаю о твоей мечте научиться плавать и увидеть море. Пусть впереди тебя ждут большие волны, тёплый песок и новые открытия. А пока продолжай играть, фантазировать и радоваться каждому дню.
 
-Я рад видеть, как уверенно ты идёшь своей дорогой, Сашенька. И, между нами, чудеса особенно любят тех, кто умеет замечать их каждый день.`;
+И помни, Дашенька: когда рядом есть любовь, забота и немного смелости, чудеса случаются чаще.`;
   const form = document.getElementById('letter-form');
   const paper = document.getElementById('letter-paper');
   const shell = document.getElementById('letter-paper-shell');
@@ -716,11 +709,11 @@ const MUSIC_SONGS = [
   }
 
   document.getElementById('letter-demo').addEventListener('click', () => {
-    form.elements.name.value = 'Сашенька';
-    form.elements.age.value = '29 лет';
-    form.elements.achievements.value = 'В этом году стала жить одна и по-настоящему повзрослела.';
-    form.elements.interests.value = 'Работает на самой любимой работе, живёт с большим интересом и счастьем.';
-    form.elements.dreams.value = 'Поверила в свои мечты и хочет смело идти своей дорогой.';
+    form.elements.name.value = 'Дашенька';
+    form.elements.age.value = '5 лет';
+    form.elements.achievements.value = 'Научилась кататься на велосипеде и заботится о младшей сестрёнке.';
+    form.elements.interests.value = 'Обожает динозавров и строит огромные замки из конструктора.';
+    form.elements.dreams.value = 'Мечтает научиться плавать и увидеть море.';
     form.elements.detail.value = '';
     edit.value = demo;
     render(demo);
